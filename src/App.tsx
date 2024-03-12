@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Router from "./routes/Router";
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -63,6 +64,7 @@ function App() {
   return (
     <>
       <GlobalStyle></GlobalStyle>
+      <Router></Router>
     </>
   );
 }
