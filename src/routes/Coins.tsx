@@ -7,7 +7,6 @@ const Container = styled.div`
   max-width: 480px;
   margin: 0 auto;
 `;
-
 const Header = styled.div`
   height: 10vh;
   display: flex;
@@ -15,11 +14,14 @@ const Header = styled.div`
   align-items: center;
   margin: 15px 0;
 `;
-
 const Title = styled.h1`
   font-size: 50px;
-  font-weight: 400;
-  color: ${(props) => props.theme.textColor};
+  font-weight: 500;
+  color: ${(props) => props.theme.accentColor};
+`;
+const Loader = styled.span`
+  text-align: center;
+  display: block;
 `;
 
 const CoinList = styled.ul`
@@ -27,7 +29,6 @@ const CoinList = styled.ul`
   flex-wrap: wrap;
   gap: 15px;
 `;
-
 const Coin = styled.li`
   width: 22.4%;
   text-align: center;
@@ -49,7 +50,6 @@ const Coin = styled.li`
     }
   }
 `;
-
 const Img = styled.img`
   width: 35px;
   height: 35px;
@@ -72,7 +72,7 @@ function Coins() {
     (async () => {
       const response = await fetch("https://api.coinpaprika.com/v1/coins");
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       setCoins(json.slice(0, 100));
       setLoading(false);
     })();
@@ -83,12 +83,14 @@ function Coins() {
         <Title>CRYPTO TRACKER</Title>
       </Header>
       {loading ? (
-        "Loading..."
+        <Loader>Loading...</Loader>
       ) : (
         <CoinList>
           {coins?.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>
+              <Link
+                to={{ pathname: `/${coin.id}`, state: { name: coin.name } }}
+              >
                 <Img
                   src={`https://static.coinpaprika.com/coin/${coin.id}/logo.png`}
                 />
