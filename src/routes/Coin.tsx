@@ -28,19 +28,23 @@ const Header = styled.div`
   margin: 15px 0;
 `;
 const Home = styled.div`
-  position: absolute;
+  width: 50px;
+  height: 50px;
+  position: fixed;
   left: 15px;
-  a {
-    font-size: 25px;
-    color: ${(proprs) => proprs.theme.accentColor};
-    transition: color 0.3s;
-  }
-  a:hover {
-    color: rgba(0, 0, 0, 0.5);
-  }
+  bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.floatBgColor};
+  border-radius: 50px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  color: ${(props) => props.theme.bgColor};
+  cursor: pointer;
 `;
 const Title = styled.h1`
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 400;
   color: ${(props) => props.theme.accentColor};
 `;
@@ -189,7 +193,7 @@ function Coin() {
       <Header>
         <Home>
           <Link to="/">
-            <FontAwesomeIcon icon={["fas", "arrow-left"]} size="lg" />
+            <FontAwesomeIcon icon={["fas", "home"]} size="lg" />
           </Link>
         </Home>
         <Title>
