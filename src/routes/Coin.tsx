@@ -12,6 +12,7 @@ import Chart from "./Chart";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "./api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   padding: 0 20px;
@@ -176,6 +177,15 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name
+            ? state.name.toUpperCase()
+            : loading
+            ? "Loading..."
+            : infoData?.name.toUpperCase()}
+        </title>
+      </Helmet>
       <Header>
         <Home>
           <Link to="/">
