@@ -145,14 +145,10 @@ interface PriceData {
 }
 
 function Coin() {
-  // const [loading, setLoading] = useState(true);
-  // const [info, setInfo] = useState<InfoData>();
-  // const [price, setPrice] = useState<PriceData>();
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
-
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>({
     queryKey: ["info", coinId],
     queryFn: () => fetchCoinInfo(coinId),
@@ -161,7 +157,6 @@ function Coin() {
     queryKey: ["tickers", coinId],
     queryFn: () => fetchCoinTickers(coinId),
   });
-
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
@@ -188,8 +183,8 @@ function Coin() {
               <span>{infoData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>${infoData?.open_source ? "Yes" : "No"}</span>
+              <span>Price:</span>
+              <span>${tickersData?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
@@ -218,7 +213,7 @@ function Coin() {
               <Price />
             </Route>
             <Route path={`/${coinId}/chart`}>
-              <Chart />
+              <Chart coinId={coinId} />
             </Route>
           </Switch>
         </>
