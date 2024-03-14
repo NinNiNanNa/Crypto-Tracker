@@ -51,9 +51,10 @@ const Loader = styled.span`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.btnBgColor1};
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 `;
 const OverviewItem = styled.div`
   display: flex;
@@ -83,12 +84,13 @@ const Tab = styled.span<{ $isActive: boolean }>`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  /* background-color: rgba(0, 0, 0, 0.5); */
   background: ${(props) =>
     props.$isActive ? props.theme.btnBgColor2 : props.theme.btnBgColor1};
   padding: 10px 0;
   border-radius: 15px;
-  color: ${(props) => props.theme.textColor};
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  color: ${(props) => (props.$isActive ? "white" : props.theme.textColor)};
+  /* color: ${(props) => props.theme.textColor}; */
   a {
     display: block;
   }
@@ -169,6 +171,7 @@ function Coin() {
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>({
     queryKey: ["tickers", coinId],
     queryFn: () => fetchCoinTickers(coinId),
+    // refetchInterval: 5000,
   });
   const loading = infoLoading || tickersLoading;
   return (

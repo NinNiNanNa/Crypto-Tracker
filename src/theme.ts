@@ -7,15 +7,15 @@ export const darkTheme: DefaultTheme = {
   btnBgColor1: "rgba(0, 0, 0, 0.5)",
   btnBgColor2: "linear-gradient(to right, #6639D2, #6465FE)",
   cardBgColor: "#2D2E40",
-  gradientColor: "linear-gradient(to right, #6639D2, #6465FE)",
+  floatBgColor: "whitesmoke",
 };
 
 export const lightTheme: DefaultTheme = {
-  bgColor: "",
-  textColor: "",
-  accentColor: "",
-  btnBgColor1: "",
-  btnBgColor2: "",
-  cardBgColor: "",
-  gradientColor: "",
+  bgColor: "whitesmoke",
+  textColor: "black",
+  accentColor: "#F37596",
+  btnBgColor1: "white",
+  btnBgColor2: "linear-gradient(to right, #FF87AD, #FFE5C6)",
+  cardBgColor: "white",
+  floatBgColor: "#232234",
 };

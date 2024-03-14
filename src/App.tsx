@@ -1,6 +1,10 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import Router from "./routes/Router";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRecoilState } from "recoil";
+import { isDarkAtom } from "./atoms";
+import { darkTheme, lightTheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -61,12 +65,40 @@ a {
 }
 `;
 
+const ThemeBtn = styled.div`
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.floatBgColor};
+  border-radius: 50px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  color: ${(props) => props.theme.bgColor};
+  cursor: pointer;
+`;
+
 function App() {
+  const [isDark, setIsDark] = useRecoilState(isDarkAtom);
+  const toggleDarkAtom = () => setIsDark((prevMode) => !prevMode);
   return (
     <>
-      <GlobalStyle></GlobalStyle>
-      <Router></Router>
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle></GlobalStyle>
+        <Router></Router>
+        <ReactQueryDevtools initialIsOpen={true} />
+        <ThemeBtn onClick={toggleDarkAtom}>
+          {isDark ? (
+            <FontAwesomeIcon icon={["fas", "sun"]} size="lg" />
+          ) : (
+            <FontAwesomeIcon icon={["fas", "moon"]} size="lg" />
+          )}
+        </ThemeBtn>
+      </ThemeProvider>
     </>
   );
 }

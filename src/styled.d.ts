@@ -10,6 +10,6 @@ declare module "styled-components" {
     btnBgColor1: string;
     btnBgColor2: string;
     cardBgColor: string;
-    gradientColor: string;
+    floatBgColor: string;
   }
 }

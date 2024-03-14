@@ -48,6 +48,7 @@ const Coin = styled.li`
   &:hover {
     a {
       background: ${(props) => props.theme.accentColor};
+      color: white;
     }
   }
 `;

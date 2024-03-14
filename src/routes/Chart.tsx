@@ -27,6 +27,7 @@ function Chart({ coinId }: ChartProps) {
   const { isLoading, data } = useQuery<IHistorical[]>({
     queryKey: ["ohlcv"],
     queryFn: () => fetchCoinHistory(coinId),
+    // refetchInterval: 10000,
   });
   const exceptData = data ?? [];
   let chartData = null;
@@ -65,8 +66,8 @@ function Chart({ coinId }: ChartProps) {
             plotOptions: {
               candlestick: {
                 colors: {
-                  upward: "#3C90EB",
-                  downward: "#DF7D46",
+                  upward: "#ff009d",
+                  downward: "#0be881",
                 },
               },
             },
