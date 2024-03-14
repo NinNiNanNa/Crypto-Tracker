@@ -3,6 +3,10 @@ import App from "./App";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./theme";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+
+library.add(fas);
 
 const queryClient = new QueryClient();
 
