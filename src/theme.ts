@@ -12,7 +12,7 @@ export const darkTheme: DefaultTheme = {
 
 export const lightTheme: DefaultTheme = {
   bgColor: "whitesmoke",
-  textColor: "black",
+  textColor: "#888",
   accentColor: "#F37596",
   btnBgColor1: "white",
   btnBgColor2: "linear-gradient(to right, #FF87AD, #FFE5C6)",

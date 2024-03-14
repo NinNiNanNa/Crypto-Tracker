@@ -50,7 +50,7 @@ const Loader = styled.span`
 
 const Overview = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: ${(props) => props.theme.btnBgColor1};
   padding: 20px;
   border-radius: 10px;
@@ -231,7 +231,7 @@ function Coin() {
 
           <Switch>
             <Route path={`/${coinId}/price`}>
-              <Price />
+              <Price coinId={coinId} />
             </Route>
             <Route path={`/${coinId}/chart`}>
               <Chart coinId={coinId} />
