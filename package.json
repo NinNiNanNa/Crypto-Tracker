@@ -33,6 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://ninninanna.github.io/Crypto-Tracker",
   "eslintConfig": {
     "extends": [
       "react-app",
